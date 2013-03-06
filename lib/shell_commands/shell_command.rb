@@ -20,9 +20,9 @@ class ShellCommand
 		end
 
 		@@last_result = {
-			:command => command, 
-			:result => result, 
-			:success => $?.success?
+			"command" => command, 
+			"result" => result, 
+			"success" => $?.success?
 		}
 		@@results << @@last_result
 		return $?.success?
