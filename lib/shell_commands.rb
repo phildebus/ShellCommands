@@ -10,3 +10,7 @@ def result_matches(regex)
 	return !Regex.new(regex).match(ShellCommand.last_result).nil?
 end
 
+def regex_result(regex)
+  return regex.match(ShellCommand.last_result) if regex.class = "Regex"
+  return Regex.new(regex).match(ShellCommand.last_result)
+end
