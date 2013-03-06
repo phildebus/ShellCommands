@@ -1,7 +1,6 @@
 class ShellCommandFailure < StandardError
-	attr_accessor :result, :command
-	def initialize(result, command)
+	attr_accessor :result
+	def initialize(result)
 		@result = result
-		@command = command
 	end
 end

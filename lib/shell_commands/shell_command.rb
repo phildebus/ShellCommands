@@ -15,23 +15,25 @@ class ShellCommand
 	end
 
 	def self.raw_do_command(command)
-		@@last_result = %x[#{command} 2>&1]
+		result = %x[#{command} 2>&1]
 		while not $?.exited? do
 		end
-		@@results << {
+
+		@@last_result = {
 			:command => command, 
-			:result => @@last_result, 
+			:result => result, 
 			:success => $?.success?
 		}
+		@@results << @@last_result
 		return $?.success?
 	end
 
 	def self.do_command(command)
 		if !raw_do_command(command)
 			if @@error_proc.nil?
-				raise ShellCommandFailure.new(@@last_result, command)
+				raise ShellCommandFailure.new(@@last_result)
 			else
-				@@error_proc.call(@@last_result, command)
+				@@error_proc.call(@@last_result)
 			end
 			return false
 		end
