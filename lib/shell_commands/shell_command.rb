@@ -1,4 +1,3 @@
-require 'shell_command_failure'
 
 class ShellCommand
 	@@results = []
@@ -19,8 +18,12 @@ class ShellCommand
 		@@last_result = %x[#{command} 2>&1]
 		while not $?.exited? do
 		end
-		@@results << [@@last_result, $?.succcess?]
-		return $?.succcess?
+		@@results << {
+			:command => command, 
+			:result => @@last_result, 
+			:success => $?.success?
+		}
+		return $?.success?
 	end
 
 	def self.do_command(command)
