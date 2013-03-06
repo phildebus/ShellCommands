@@ -6,11 +6,11 @@ def do_command(command)
 end
 
 def result_matches(regex)
-	return !regex.match(ShellCommand.last_result).nil? if regex.class = "Regex"
-	return !Regex.new(regex).match(ShellCommand.last_result).nil?
+	return !regex.match(ShellCommand.last_result["result"]).nil? if regex.class == "Regexp"
+	return !Regexp.new(regex).match(ShellCommand.last_result["result"]).nil?
 end
 
 def regex_result(regex)
-  return regex.match(ShellCommand.last_result) if regex.class = "Regex"
-  return Regex.new(regex).match(ShellCommand.last_result)
+  return regex.match(ShellCommand.last_result["result"]) if regex.class == "Regexp"
+  return Regexp.new(regex).match(ShellCommand.last_result["result"])
 end
