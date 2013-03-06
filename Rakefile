@@ -15,10 +15,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "shell_commands"
+  gem.version = "1.0.0.pre"
   gem.homepage = "http://github.com/phildebus/shell_commands"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Simple gem used to manage calling shell commands from ruby}
+  gem.description = %Q{Simple gem used to manage calling shell commands from ruby}
   gem.email = "debus.phil@gmail.com"
   gem.authors = ["phildebus"]
   # dependencies defined in Gemfile
@@ -30,14 +31,6 @@ Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/test_*.rb'
   test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
 end
 
 task :default => :test
