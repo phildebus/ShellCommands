@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "lib/shell_commands.rb",
     "lib/shell_commands/shell_command.rb",
     "lib/shell_commands/shell_command_failure.rb",
+    "shell_commands.gemspec",
     "test/helper.rb",
     "test/test_shell_commands.rb"
   ]
